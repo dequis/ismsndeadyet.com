@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Is MSN dead yet?</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<style>
+h1 {
+    font-size: 20vmin;
+    font-weight: bold;
+}
+h2 {
+    font-size: 3vmin;
+}
+h3 {
+    font-size: 2vmin;
+}
+.fineprint {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #888;
+}
+.space5vh {height: 5vh;}
+.space10vh {height: 10vh;}
+.space20vh {height: 20vh;}
+.space30vh {height: 30vh;}
+
+.good {
+    color: lime;
+}
+.bad {
+    color: red;
+}
+.good, .bad {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'arial black', 'impact', sans-serif;
+    padding: 0px !important;
+}
+.sneaky {
+    color: #333;
+}
+.sneaky:hover {
+    color: #338;
+    text-decoration: none;
+    cursor: text;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="text-center">
+    <h2>Is MSN dead yet?</h2>
+    <p class="fineprint">
+        (And by MSN I mean <a href="http://en.wikipedia.org/wiki/Microsoft_Messenger_service">microsoft's messenger service</a>, <br />
+        previously known as MSN Messenger or Windows Live Messenger)<br />
+        (<a href="http://msn.com">msn.com</a> is unrelated and not going to die, please don't sue me Microsoft, I love you &hearts;)<br />
+        (Not affiliated with microsoft in any way)
+    </p>
+    <h1 id="nope">NO</h1>
+    <h2 id="maybe">Well maybe just a bit</h2>
+    <div class="space5vh"></div>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-4 text-center">
+        <h3>Main servers status</h3>
+        <table class="table table-striped table-hover table-condensed">
+        <tr>
+            <td>Hostname</td>
+            <td>IP</td>
+            <td>Port 443</td>
+            <td>Port 1863</td>
+        </tr>
+        {% for hostname, ip, ports in servers %}
+        <tr>
+            <td><code>{{hostname}}</code></td>
+            <td><code>{{ip}}</code></td>
+            {% for port in ports %}
+                {% if port %}
+                <td class="good">✔</td>
+                {% else %}
+                <td class="bad">✘</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+        <p>Updating every 30 mins</p>
+    </div>
+    <div class="col-md-4">
+        <h3 class="text-center">Breaking news</h3>
+        <p><b>2014-12-01</b>: <code>bay.*</code> servers closed port 1863, but HTTP(S) connections to them still work. </p>
+        <p><b>2014-11-13</b>: ApplicationID for windows live messenger 2008 and 2009 blocked.
+            <a href="http://messengergeek.wordpress.com/2014/11/12/most-third-party-messenger-clients-have-gone-offline-temporarily/">
+                Messengergeek blog post
+            </a>
+        </p>
+        <p>See also:</p>
+        <ul class="text-left">
+            <li><a href="http://messengergeek.wordpress.com/messenger-status/">Messengergeek's detailed status page</a></li>
+            <li><a href="https://status.live.com/detail/msgr">Official status page</a> which seems to ignore the current issues</a></li>
+            <li><a href="http://wiki.dequis.org/projects/msn/protocol_versions/">dx's protocol versions page</a>, status and descriptions</li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3 class="text-center">What clients work</h3>
+        <ul>
+            <li>
+                <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
+                    Official client patched with messenger reviver
+                </a>
+            </li>
+            <li><a href="http://pidgin.im/">Pidgin</a> and derivatives using libpurple 2.10.11. See also "Some contacts are offline" below</li>
+            <li><a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">Adium patched with adium messenger reviver</a></li>
+            <li><a href="http://bitlbee.org/">BitlBee</a>, dev versions &gt;1064. <a href="http://wiki.bitlbee.org/HowtoMsn">Read more</a></li>
+            <li><a href="http://www.trillian.im/">Trillian</a>, latest beta build</li>
+            <li>(add more here)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center">FAQ</h2>
+    <h3>What about all the news saying it's gone?</h3>
+    <p>That's partly because nobody does fact checking and partly because the criteria of "dead" here is more oriented to third party clients</p>
+    <p>It was supposed to die in march 2013. The only thing that changed was a forced upgrade of the official clients to skype. Before mid-november 2014 the only issue was that offline messages and mail notifications didn't work.</p>
+    <p>Right now it <em>seems</em> like it might be dying, so I made this to track the progress of its death.</p>
+    <h3>Getting connection refused</h3>
+    <p>Try switching to http method, or add a line to your <a href="http://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a> assigning <code>messenger.hotmail.com</code> one of the working IPs taken from above, for example:</p>
+    <pre>157.56.108.81 messenger.hotmail.com</pre>
+    <h3>Some contacts are offline</h3>
+    <p>Might be a pidgin bug that sneaked in the last release. Try removing that contact and adding it again</p>
+    <p>If everything fails, <a href="http://outlook.com">outlook.com</a> has a webchat (using MSNP24!), any msn login will work</p>
+    <h3>Why care about MSN?</h3>
+    <p>A few reasons:</p>
+    <ul>
+        <li>It's a decent bridge to the skype network</li>
+        <li>Works in clients that aren't skype</li>
+        <li><a href="http://store.steampowered.com/app/253030/" class="sneaky">I like the idea of delaying the inevitable by catching energy boosts which reverse the setting sun - if only for a moment</a></li>
+        <li>Fun things are fun</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="space10vh"></div>
+
+<div class="text-center">
+    <p>Not affiliated to Microsoft Corporation in any way. Microsoft, MSN, and Windows are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries</p>
+</div>
+<script>
+(function() {
+    var maybe = document.getElementById("maybe");
+    var labels = [
+        "Well maybe just a bit",
+        "Doesn't look too bad here",
+        "Ticket resolved as WORKSFORME",
+        "Just apply a patch or two and it will work",
+        "It might ask you to feed it brains, but that's normal",
+        "It's not dead, it's resting.",
+        "It's not dead, it's stunned.",
+        "It's not dead, it's pining for the fjords.",
+        "Nostalgia awaits!",
+    ];
+    maybe.innerHTML = labels[Math.floor(Math.random() * labels.length)];
+})();
+</script>
+</body>
+</html>
