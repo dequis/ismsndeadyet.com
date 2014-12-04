@@ -43,7 +43,6 @@ h3 {
 }
 .sneaky:hover {
     color: #338;
-    text-decoration: none;
     cursor: text;
 }
 </style>
@@ -111,19 +110,24 @@ h3 {
     </div>
     <div class="col-md-4">
         <h3 class="text-center">What clients work</h3>
+        <p class="fineprint text-center">(MSNP## denotes the protocol version number)</p>
+        <p>
         <ul>
-            <li>
-                <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
-                    Official client patched with messenger reviver
-                </a>
-            </li>
             <li><a href="http://pidgin.im/">Pidgin</a> (MSNP18) and derivatives using libpurple 2.10.11. See also "Some contacts are offline" below</li>
             <li><a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">Adium patched with adium messenger reviver</a></li>
             <li><a href="http://bitlbee.org/">BitlBee</a> (MSNP18), dev versions &gt;1064. <a href="http://wiki.bitlbee.org/HowtoMsn">Read more</a></li>
             <li><a href="http://www.trillian.im/">Trillian</a>, latest beta build</li>
+        </ul>
+        <p>Official clients:</p>
+        <ul>
+            <li>
+                Windows Live Messenger 2008-2012 (MSNP15-MSNP21)
+                <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
+                    patched with messenger reviver
+                </a>
+            </li>
             <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24), but you probably don't care about those</li>
             <li>Windows messenger 4.7 (MSNP8) from windows XP still works. <a href="http://dump.dequis.org/SR_XG.png">Seriously</a></li>
-            <li>(add more here)</li>
         </ul>
     </div>
 </div>
@@ -148,6 +152,11 @@ h3 {
         <li><a href="http://store.steampowered.com/app/253030/" class="sneaky">I like the idea of delaying the inevitable by catching energy boosts which reverse the setting sun - if only for a moment</a></li>
         <li>Fun things are fun</li>
     </ul>
+    <h3>What does the future hold?</h3>
+    <p>This is speculation, but based on the current trends, it will keep breaking slowly, based on what microsoft doesn't need to keep alive anymore</p>
+    <p>The HTTP(S) method (port 443 in the status table above) is likely to stay up. These servers are still used by skype, although with a newer protocol.</p>
+    <p>The messaging client included in windows 8.0 (which they probably still need to support) uses a MSNP22 - a protocol version older than skype's, newer than most other third party clients, but using the same connection method as the older ones, through HTTPS</p>
+    <p><a href="http://messengergeek.wordpress.com/2014/09/11/when-is-messenger-really-shutting-down/">See also this messengergeek post</a></p>
 </div>
 
 </div>
