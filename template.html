@@ -124,11 +124,11 @@ h3 {
 <p>The first two rows of each column are the servers that usually redirect to the rest</p>
 <p>:80, :443, :1863 indicate pings to ports, respectively: HTTP, HTTPS, MSNP. First two are what you'd use with HTTP method (usually just HTTP, not HTTPS), last one is the normal MSN protocol</p>
 <p>VER tries to establish a connection to port 1863 and send <code>VER 1 MSNP18</code> to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</p>
-
+<p>Updated every 30 minutes. May have a few minor mistakes</p>
 <div class="row">
     {% for name, servers in regions %}
     <div class="col-md-4 text-center">
-        <p>{{code}}</p>
+        <h3><code>{{name}}</code></h3>
         <table class="table table-striped table-hover table-condensed table-status">
         <tr>
             <td>IP</td>
