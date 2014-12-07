@@ -47,7 +47,11 @@ h3 {
 
 .table-status td {
     padding: 0px !important;
+}
 
+.anchor {
+    font-size: 16px;
+    opacity: 0.5;
 }
 </style>
 
@@ -74,14 +78,18 @@ h3 {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>It's not dead, but it can only be accessed decently with http method. So just enable that</p>
-        <p>More precisely: the default connection address, <code>messenger.hotmail.com</code> redirects to 6 servers, which are in charge of redirecting to the rest.</p>
-        <p>Those 6 servers either have closed the MSNP port (and gone HTTP only), or do internal redirections to servers that don't work</p>
+        <p>It's not dead, but the normal way to access it (<code>messenger.hotmail.com:1863</code>) will lead you to dead servers. Alternatives:</p>
+        <ul>
+            <li>Enable http method. All servers support this, and will likely keep it up. (<a href="#pidgin-http-method">FAQ entry for pidgin</a>)</li>
+            <li>Pick one working IP randomly from the lists below and tell your client to connect to it. (<a href="#connection-refused">FAQ entry</a>)</li>
+        </ul>
+        <p>Also, keep your clients up to date!</p>
+        <p>Messengergeek wrote a <a href="http://messengergeek.wordpress.com/2014/12/05/microsoft-appears-to-be-pushing-messenger-to-http/">nice blog post explaining the situation</a> in a bit more of detail</p>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
-        <p><b>2014-12-04</b>: <code>bn1.*</code> servers closed port 1863 too. IT'S HAPPENING. Switch to http method today or join us in the fun with internal servers.</p>
-        <p><b>2014-12-01</b>: <code>bay.*</code> servers closed port 1863, but HTTP(S) connections to them still work.</p>
+        <p><b>2014-12-04</b>: Two main <code>bn1</code> servers closed port 1863.</p>
+        <p><b>2014-12-01</b>: Two main <code>bay</code> servers closed port 1863, but HTTP(S) connections to them still work.</p>
         <p><b>2014-11-13</b>: ApplicationID for windows live messenger 2008 and 2009 blocked.
             <a href="http://messengergeek.wordpress.com/2014/11/12/most-third-party-messenger-clients-have-gone-offline-temporarily/">
                 Messengergeek blog post
@@ -119,12 +127,12 @@ h3 {
 </div>
 
 <div class="text-center">
-    <h2>Needlessly detailed server status</h2>
+    <h2>Needlessly detailed server status <a href="#status" name="status" class="anchor">#</a></h2>
 </div>
 <p>The first two rows of each column are the servers that usually redirect to the rest</p>
 <p>:80, :443, :1863 indicate pings to ports, respectively: HTTP, HTTPS, MSNP. First two are what you'd use with HTTP method (usually just HTTP, not HTTPS), last one is the normal MSN protocol</p>
 <p>VER tries to establish a connection to port 1863 and send <code>VER 1 MSNP18</code> to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</p>
-<p>Updated every 30 minutes. May have a few minor mistakes</p>
+<p>Updated every 30 minutes. May have a few minor mistakes (due to packet loss, etc)</p>
 <div class="row">
     {% for name, servers in regions %}
     <div class="col-md-4 text-center">
@@ -161,18 +169,30 @@ h3 {
 </div>
 
 <div class="container">
-    <h2 class="text-center">FAQ</h2>
-    <h3>What about all the news saying it's gone?</h3>
+    <h2 class="text-center">FAQ <a href="#faq" name="faq" class="anchor">#</a></h2>
+    <h3>What about all the news saying it's gone?  <a href="#what-about-all-the-news-saying-its-gone" name="what-about-all-the-news-saying-its-gone" class="anchor">#</a></h3>
     <p>That's partly because nobody does fact checking and partly because the criteria of "dead" here is more oriented to third party clients</p>
     <p>It was supposed to die in march 2013. The only thing that changed was a forced upgrade of the official clients to skype. Before mid-november 2014 the only issue was that offline messages and mail notifications didn't work.</p>
     <p>Right now it <em>seems</em> like it might be dying, so I made this to track the progress of its death.</p>
-    <h3>Getting connection refused</h3>
-    <p>Try switching to http method, or add a line to your <a href="http://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a> assigning <code>messenger.hotmail.com</code> one of the working IPs taken from above, for example:</p>
+    <h3>Getting connection refused  <a href="#connection-refused" name="connection-refused" class="anchor">#</a></h3>
+    <p>Try switching to http method</p>
+    <p>If your client doesn't support http method, you can try setting the server address to one of the working IPs from above</p>
+    <p>One way to set the server address is to edit your <a href="http://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a> and assign it to <code>messenger.hotmail.com</code> by adding a line like this:</p>
     <pre>134.170.24.231 messenger.hotmail.com</pre>
-    <h3>Some contacts are offline</h3>
+    <p>Remember to change that IP - overloaded servers may redirect you back to the broken ones!</p>
+    <h3>How do I switch to HTTP method in pidgin? <a href="#pidgin-http-method" name="pidgin-http-method" class="anchor">#</a></h3>
+    <ol>
+        <li>In the accounts window, click modify</li>
+        <li>Go to the advanced tab</li>
+        <li>Check "use http method"</li>
+    </ol>
+    <p>That's all. All the other fields are irrelevant and can be left as-is</p>
+    <img src="http://dump.dequis.org/WX6Xc.png" alt="" class="center-block img-responsive" />
+    <h3>Some contacts are offline  <a href="#some-contacts-are-offline" name="some-contacts-are-offline" class="anchor">#</a></h3>
     <p>Might be a pidgin bug that sneaked in the last release. Try removing that contact and adding it again</p>
     <p>If everything fails, <a href="http://outlook.com">outlook.com</a> has a webchat (using MSNP24!), any msn login will work</p>
-    <h3>Why care about MSN?</h3>
+
+    <h3>Why care about MSN? <a href="#why-care-about-msn" name="why-care-about-msn" class="anchor">#</a></h3>
     <p>A few reasons:</p>
     <ul>
         <li>It's a decent bridge to the skype network</li>
@@ -180,7 +200,7 @@ h3 {
         <li><a href="http://store.steampowered.com/app/253030/" class="sneaky">I like the idea of delaying the inevitable by catching energy boosts which reverse the setting sun - if only for a moment</a></li>
         <li>Fun things are fun</li>
     </ul>
-    <h3>What does the future hold?</h3>
+    <h3>What does the future hold? <a href="#what-does-the-future-hold" name="what-does-the-future-hold" class="anchor">#</a></h3>
     <p>This is speculation, but based on the current trends, it will keep breaking slowly, based on what microsoft doesn't need to keep alive anymore</p>
     <p>The HTTP(S) method (port 443 in the status table above) is likely to stay up. These servers are still used by skype, although with a newer protocol.</p>
     <p>The messaging client included in windows 8.0 (which they probably still need to support) uses a MSNP22 - a protocol version older than skype's, newer than most other third party clients, but using the same connection method as the older ones, through HTTPS</p>
