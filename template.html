@@ -11,10 +11,10 @@ h1 {
     font-weight: bold;
 }
 h2 {
-    font-size: 3vmin;
+    font-size: 30px;
 }
 h3 {
-    font-size: 2vmin;
+    font-size: 22px;
 }
 .fineprint {
     font-size: 0.8em;
@@ -52,6 +52,12 @@ h3 {
 .anchor {
     font-size: 16px;
     opacity: 0.5;
+}
+.main-server, .main-server * {
+    background-color: #FFA !important;
+}
+ul {
+    padding-left: 20px;
 }
 </style>
 
@@ -128,11 +134,9 @@ h3 {
 
 <div class="text-center">
     <h2>Needlessly detailed server status <a href="#status" name="status" class="anchor">#</a></h2>
+    <p>Updated every 30 minutes.</p>
+    <p>May have a few minor mistakes (due to packet loss, etc). Scroll down for reference.</p>
 </div>
-<p>The first two rows of each column are the servers that usually redirect to the rest</p>
-<p>:80, :443, :1863 indicate pings to ports, respectively: HTTP, HTTPS, MSNP. First two are what you'd use with HTTP method (usually just HTTP, not HTTPS), last one is the normal MSN protocol</p>
-<p>VER tries to establish a connection to port 1863 and send <code>VER 1 MSNP18</code> to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</p>
-<p>Updated every 30 minutes. May have a few minor mistakes (due to packet loss, etc)</p>
 <div class="row">
     {% for name, servers in regions %}
     <div class="col-md-4 text-center">
@@ -146,7 +150,7 @@ h3 {
             <td>VER</td>
         </tr>
         {% for ip, ports, ver_result in servers %}
-        <tr>
+        <tr {% if loop.index < 3 %}class="main-server"{% endif %}>
             <td><code>{{ip}}</code></td>
             {% for port in ports %}
                 {% if port %}
@@ -166,7 +170,36 @@ h3 {
         </table>
     </div>
     {% endfor %}
+
 </div>
+
+<h3>Reference <a href="#reference" name="reference" class="anchor">#</a></h2>
+<table class="table">
+    <tr>
+        <td><code>bay</code></td>
+        <td>Server region codename (first three characters of the hostname of each of those servers)</td>
+    </tr>
+    <tr>
+        <td class="main-server">Highlight</td>
+        <td>The highlighted rows are the main servers of a region, which redirect to the rest.</td>
+    </tr>
+    <tr>
+        <td>:80</td>
+        <td>HTTP port open. This is what you'd use when enabling HTTP method.</td>
+    </tr>
+    <tr>
+        <td>:443</td>
+        <td>HTTPS port open. Same as above, but not all clients use this. Newer versions of official clients use it (including skype)</td>
+    </tr>
+    <tr>
+        <td>:1863</td>
+        <td>MSNP port open. The good old standard msn protocol port.</td>
+    </tr>
+    <tr>
+        <td>VER</td>
+        <td>Sends <code>VER 1 MSNP18</code> to port 1863 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
+    </tr>
+</table>
 
 <div class="container">
     <h2 class="text-center">FAQ <a href="#faq" name="faq" class="anchor">#</a></h2>
