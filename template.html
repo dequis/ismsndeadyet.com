@@ -113,9 +113,10 @@ ul {
         <p class="fineprint text-center">(MSNP## denotes the protocol version number)</p>
         <p>
         <ul>
-            <li><a href="http://pidgin.im/">Pidgin</a> (MSNP18) and derivatives using libpurple 2.10.11. See also "Some contacts are offline" below</li>
-            <li><a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">Adium patched with adium messenger reviver</a></li>
-            <li><a href="http://bitlbee.org/">BitlBee</a> (MSNP18), dev versions &gt;1064. <a href="http://wiki.bitlbee.org/HowtoMsn">Read more</a>. Does not support http method, unless libpurple is installed</li>
+            <li><a href="http://pidgin.im/">Pidgin</a> 2.10.11 (MSNP18) and derivatives.<br >
+                FAQs: <a href="#pidgin-http-method">HTTP method</a>, <a href="#some-contacts-are-offline">Some contacts are offline</a></li>
+            <li><a href="http://bitlbee.org/">BitlBee</a> (MSNP18), See <a href="#bitlbee">FAQ entry</a> below</li>
+            <li>Adium patched with <a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">adium messenger reviver</a></li>
             <li><a href="http://www.trillian.im/">Trillian</a>, latest beta build</li>
         </ul>
         <p>Official clients:</p>
@@ -126,7 +127,7 @@ ul {
                     patched with messenger reviver
                 </a>
             </li>
-            <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24), but you probably don't care about those</li>
+            <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24)</li>
             <li>Windows messenger 4.7 (MSNP8) from windows XP still works. <a href="http://dump.dequis.org/SR_XG.png">Seriously</a></li>
         </ul>
     </div>
@@ -213,6 +214,7 @@ ul {
     <p>One way to set the server address is to edit your <a href="http://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a> and assign it to <code>messenger.hotmail.com</code> by adding a line like this:</p>
     <pre>134.170.24.231 messenger.hotmail.com</pre>
     <p>Remember to change that IP - overloaded servers may redirect you back to the broken ones!</p>
+
     <h3>How do I switch to HTTP method in pidgin? <a href="#pidgin-http-method" name="pidgin-http-method" class="anchor">#</a></h3>
     <ol>
         <li>In the accounts window, click modify</li>
@@ -221,9 +223,21 @@ ul {
     </ol>
     <p>That's all. All the other fields are irrelevant and can be left as-is</p>
     <img src="http://dump.dequis.org/WX6Xc.png" alt="" class="center-block img-responsive" />
+
     <h3>Some contacts are offline  <a href="#some-contacts-are-offline" name="some-contacts-are-offline" class="anchor">#</a></h3>
     <p>Might be a pidgin bug that sneaked in the last release. Try removing that contact and adding it again</p>
     <p>If everything fails, <a href="http://outlook.com">outlook.com</a> has a webchat (using MSNP24!), any msn login will work</p>
+
+    <h3>How do I fix my BitlBee? <a href="#bitlbee" name="bitlbee" class="anchor">#</a></h3>
+    <p><b>Native BitlBee</b>: Doesn't support HTTP method (I'm working on it, okay!)</p>
+    <p>If you're using revision 1070, just do:</p>
+    <pre>account msn set server 134.170.24.231</pre>
+    <p>If you're using revision 1064, edit your hosts file as suggested in a previous question. If you're using something older, it won't work because of the ApplicationID block. Except, maybe, 1.x, but please don't.</p>
+    <p><b>bitlbee-libpurple</b>: Enable http method like this:</p>
+    <pre>account msn set http_method on</pre>
+    <p>Also get libpurple 2.10.11 or it won't work because of the ApplicationID block.</p>
+    <p><b>Public servers</b>: testing.bitlbee.org usually runs the latest version and should work.</p>
+    <p><b>See also</b>: <a href="http://wiki.bitlbee.org/HowtoMsn">HowtoMsn wiki page</a></p>
 
     <h3>Why care about MSN? <a href="#why-care-about-msn" name="why-care-about-msn" class="anchor">#</a></h3>
     <p>A few reasons:</p>
