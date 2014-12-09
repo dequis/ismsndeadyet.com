@@ -84,7 +84,9 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>It's not dead, but the normal way to access it (<code>messenger.hotmail.com:1863</code>) will lead you to dead servers. Alternatives:</p>
+        <p>It's not dead, but the normal way to access it (<code>messenger.hotmail.com:1863</code>) will get you connection refused.</p>
+        <p>In theory this means MSN is now HTTP only, but the all the internal servers seem to have port 1863 open still</p>
+        <p>Alternatives:</p>
         <ul>
             <li>Enable http method. All servers support this, and will likely keep it up. (<a href="#pidgin-http-method">FAQ entry for pidgin</a>)</li>
             <li>Pick one working IP randomly from the lists below and tell your client to connect to it. (<a href="#connection-refused">FAQ entry</a>)</li>
@@ -94,8 +96,9 @@ ul {
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2014-12-09</b>: Two main <code>db3</code> servers closed port 1863. These were the last externally exposed addresses. HTTP(S) connections to all these servers still work.</p>
         <p><b>2014-12-04</b>: Two main <code>bn1</code> servers closed port 1863.</p>
-        <p><b>2014-12-01</b>: Two main <code>bay</code> servers closed port 1863, but HTTP(S) connections to them still work.</p>
+        <p><b>2014-12-01</b>: Two main <code>bay</code> servers closed port 1863.</p>
         <p><b>2014-11-13</b>: ApplicationID for windows live messenger 2008 and 2009 blocked.
             <a href="http://messengergeek.wordpress.com/2014/11/12/most-third-party-messenger-clients-have-gone-offline-temporarily/">
                 Messengergeek blog post
