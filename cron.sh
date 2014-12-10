@@ -19,3 +19,5 @@ done
 wait
 
 python2 renderpage.py
+
+cp index.html archive/$(date '+%Y-%m-%d_%H-%M').html
