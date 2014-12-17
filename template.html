@@ -85,10 +85,10 @@ ul {
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
         <p>It's not dead, but the normal way to access it (<code>messenger.hotmail.com:1863</code>) will get you connection refused.</p>
-        <p>In theory this means MSN is now HTTP only, but the all the internal servers seem to have port 1863 open still</p>
+        <p>In theory this means MSN is now HTTPS only, but the all the internal servers seem to have port 1863 open still</p>
         <p>Alternatives:</p>
         <ul>
-            <li>Enable http method. All servers support this, and will likely keep it up. (<a href="#pidgin-http-method">FAQ entry for pidgin</a>)</li>
+            <li>Enable http method. Most servers support this (all of them if HTTPS). (<a href="#pidgin-http-method">FAQ entry for pidgin</a>)</li>
             <li>Pick one working IP randomly from the lists below and tell your client to connect to it. (<a href="#connection-refused">FAQ entry</a>)</li>
         </ul>
         <p>Also, keep your clients up to date!</p>
@@ -96,7 +96,8 @@ ul {
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
-        <p><b>2014-12-09</b>: Two main <code>db3</code> servers closed port 1863. These were the last externally exposed addresses. HTTP(S) connections to all these servers still work.</p>
+        <p><b>2014-12-17</b>: Two main <code>bn1</code> servers closed port 80 (HTTP). HTTPS still works, but few clients use it.</p>
+        <p><b>2014-12-09</b>: Two main <code>db3</code> servers closed port 1863. These were the last externally exposed addresses. HTTPS connections to all these servers still work.</p>
         <p><b>2014-12-04</b>: Two main <code>bn1</code> servers closed port 1863.</p>
         <p><b>2014-12-01</b>: Two main <code>bay</code> servers closed port 1863.</p>
         <p><b>2014-11-13</b>: ApplicationID for windows live messenger 2008 and 2009 blocked.
@@ -125,13 +126,14 @@ ul {
         <p>Official clients:</p>
         <ul>
             <li>
-                Windows Live Messenger 2008-2012 (MSNP15-MSNP21)
+                Windows Live Messenger <del>2008-</del>2012 (MSNP15-MSNP21)
                 <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
                     patched with messenger reviver
                 </a>
             </li>
             <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24)</li>
-            <li>Windows messenger 4.7 (MSNP8) from windows XP still works. <a href="http://dump.dequis.org/SR_XG.png">Seriously</a></li>
+            <li>Windows 8.0 Messaging client (MSNP22)</li>
+            <li><del>Windows messenger 4.7 (MSNP8) from windows XP still works. <a href="http://dump.dequis.org/SR_XG.png">Seriously</a></del>. Gone because it used HTTP. RIP.</li>
         </ul>
     </div>
 </div>
@@ -193,7 +195,7 @@ ul {
     </tr>
     <tr>
         <td>:443</td>
-        <td>HTTPS port open. Same as above, but not all clients use this. Newer versions of official clients use it (including skype)</td>
+        <td>HTTPS port open. Same as above, but not all clients use this. Newer versions of official clients use it (including WLM 2012, the windows 8 messaging client and skype)</td>
     </tr>
     <tr>
         <td>:1863</td>
