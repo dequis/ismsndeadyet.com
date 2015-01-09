@@ -84,18 +84,15 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>It's not dead, but the normal way to access it (<code>messenger.hotmail.com:1863</code>) will get you connection refused.</p>
-        <p>In theory this means MSN is now HTTPS only, but the all the internal servers seem to have port 1863 open still</p>
-        <p>Alternatives:</p>
-        <ul>
-            <li>Enable http method. Most servers support this (all of them if HTTPS). (<a href="#pidgin-http-method">FAQ entry for pidgin</a>)</li>
-            <li>Pick one working IP randomly from the lists below and tell your client to connect to it. (<a href="#connection-refused">FAQ entry</a>)</li>
-        </ul>
+        <p>It's not dead, but the normal ways to access it (ports 1863 or 80) will get you connection refused.</p>
+        <p>Only the clients that support connecting through HTTPS (port 443) will work out of the box, which are few, but you can make other clients work <b>by changing the "server" address they use to an internal server</b></p>
+        <p>The catch is that the internal servers will sometimes redirect you to broken servers. So the best advice I have for now is to <b>keep trying several addresses from the lists below until you find that one works.</b></p>
         <p>Also, keep your clients up to date!</p>
         <p>Messengergeek wrote a <a href="http://messengergeek.wordpress.com/2014/12/05/microsoft-appears-to-be-pushing-messenger-to-http/">nice blog post explaining the situation</a> in a bit more of detail</p>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
         <p><b>2014-12-17</b>: Two main <code>bn1</code> servers closed port 80 (HTTP). HTTPS still works, but few clients use it.</p>
         <p><b>2014-12-09</b>: Two main <code>db3</code> servers closed port 1863. These were the last externally exposed addresses. HTTPS connections to all these servers still work.</p>
         <p><b>2014-12-04</b>: Two main <code>bn1</code> servers closed port 1863.</p>
@@ -213,12 +210,12 @@ ul {
     <p>That's partly because nobody does fact checking and partly because the criteria of "dead" here is more oriented to third party clients</p>
     <p>It was supposed to die in march 2013. The only thing that changed was a forced upgrade of the official clients to skype. Before mid-november 2014 the only issue was that offline messages and mail notifications didn't work.</p>
     <p>Right now it <em>seems</em> like it might be dying, so I made this to track the progress of its death.</p>
+
     <h3>Getting connection refused  <a href="#connection-refused" name="connection-refused" class="anchor">#</a></h3>
-    <p>Try switching to http method</p>
     <p>If your client doesn't support http method, you can try setting the server address to one of the working IPs from above</p>
     <p>One way to set the server address is to edit your <a href="http://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a> and assign it to <code>messenger.hotmail.com</code> by adding a line like this:</p>
-    <pre>134.170.24.231 messenger.hotmail.com</pre>
-    <p>Remember to change that IP - overloaded servers may redirect you back to the broken ones!</p>
+    <pre>XXX.XXX.XXX.XXX messenger.hotmail.com</pre>
+    <p>Change that XXX.XXX.XXX.XXX to something else, and note that overloaded servers may redirect you back to the broken ones!</p>
 
     <h3>How do I switch to HTTP method in pidgin? <a href="#pidgin-http-method" name="pidgin-http-method" class="anchor">#</a></h3>
     <ol>
@@ -235,14 +232,11 @@ ul {
     <p>If everything fails, <a href="http://outlook.com">outlook.com</a> has a webchat (using MSNP24!), any msn login will work</p>
 
     <h3>How do I fix my BitlBee? <a href="#bitlbee" name="bitlbee" class="anchor">#</a></h3>
-    <p><b>Native BitlBee</b>: Doesn't support HTTP method (I'm working on it, okay!)</p>
-    <p>If you're using revision 1070, just do:</p>
-    <pre>account msn set server 134.170.24.231</pre>
-    <p>If you're using revision 1064, edit your hosts file as suggested in a previous question. If you're using something older, it won't work because of the ApplicationID block. Except, maybe, 1.x, but please don't.</p>
-    <p><b>bitlbee-libpurple</b>: Enable http method like this:</p>
-    <pre>account msn set http_method on</pre>
-    <p>Also get libpurple 2.10.11 or it won't work because of the ApplicationID block.</p>
-    <p><b>Public servers</b>: testing.bitlbee.org usually runs the latest version and should work.</p>
+    <p>If you're using revision 1070 (or bitlbee-libpurple with libpurple 2.10.11), just do:</p>
+    <pre>account msn set server XXX.XXX.XXX.XXX</pre>
+    <p>Replacing XXX.XXX.XXX.XXX with an address from the list above</p>
+    <p>If you're using something older, it won't work because of the ApplicationID block, even if you get it to connect</p>
+    <p><b>Public servers</b>: im.codemonkey.be (<a href="http://bitlbee.org/main.php/servers.html">run by the same sysadmin as testing.bitlbee.org</a>) usually runs the latest version and should work.</p>
     <p><b>See also</b>: <a href="http://wiki.bitlbee.org/HowtoMsn">HowtoMsn wiki page</a></p>
 
     <h3>Why care about MSN? <a href="#why-care-about-msn" name="why-care-about-msn" class="anchor">#</a></h3>
@@ -255,7 +249,7 @@ ul {
     </ul>
     <h3>What does the future hold? <a href="#what-does-the-future-hold" name="what-does-the-future-hold" class="anchor">#</a></h3>
     <p>This is speculation, but based on the current trends, it will keep breaking slowly, based on what microsoft doesn't need to keep alive anymore</p>
-    <p>The HTTP(S) method (port 443 in the status table above) is likely to stay up. These servers are still used by skype, although with a newer protocol.</p>
+    <p>The HTTPS method (port 443 in the status table above) is likely to stay up. These servers are still used by skype, although with a newer protocol.</p>
     <p>The messaging client included in windows 8.0 (which they probably still need to support) uses a MSNP22 - a protocol version older than skype's, newer than most other third party clients, but using the same connection method as the older ones, through HTTPS</p>
     <p><a href="http://messengergeek.wordpress.com/2014/09/11/when-is-messenger-really-shutting-down/">See also this messengergeek post</a></p>
 </div>
