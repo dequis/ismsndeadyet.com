@@ -3,7 +3,8 @@ import os
 import xml.etree.ElementTree as ET
 from jinja2 import Template
 
-ver_results = [x.strip() for x in open("ver_results").readlines()]
+ver_results = [[x.strip() for x in open("ver_results_" + y).readlines()]
+               for y in ("msnp18", "msnp21")]
 
 def parse(region):
     tree = ET.parse("ips_%s.xml" % region)
@@ -23,9 +24,9 @@ def parse(region):
     output = []
     for line in open("ips_%s" % region):
         ip = line.strip()
-        ver_result = ip not in ver_results
+        ip_ver_results = [ip not in x for x in ver_results]
         if ip in host_ports:
-            output.append((ip, host_ports[ip].values(), ver_result))
+            output.append((ip, host_ports[ip].values(), ip_ver_results))
 
     return (region, output)
 

@@ -150,9 +150,10 @@ ul {
             <td>:80</td>
             <td>:443</td>
             <td>:1863</td>
-            <td>VER</td>
+            <td style="font-size: smaller">MSNP18</td>
+            <td style="font-size: smaller">MSNP21</td>
         </tr>
-        {% for ip, ports, ver_result in servers %}
+        {% for ip, ports, ver_results in servers %}
         <tr {% if loop.index < 3 %}class="main-server"{% endif %}>
             <td><code>{{ip}}</code></td>
             {% for port in ports %}
@@ -163,11 +164,13 @@ ul {
                 {% endif %}
             {% endfor %}
 
-            {% if ver_result %}
-            <td class="good">✔</td>
-            {% else %}
-            <td class="bad">✘</td>
-            {% endif %}
+            {% for ver_result in ver_results %}
+                {% if ver_result %}
+                <td class="good">✔</td>
+                {% else %}
+                <td class="bad">✘</td>
+                {% endif %}
+            {% endfor %}
         </tr>
         {% endfor %}
         </table>
@@ -199,8 +202,12 @@ ul {
         <td>MSNP port open. The good old standard msn protocol port.</td>
     </tr>
     <tr>
-        <td>VER</td>
+        <td>MSNP18</td>
         <td>Sends <code>VER 1 MSNP18</code> to port 1863 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
+    </tr>
+    <tr>
+        <td>MSNP21</td>
+        <td>Same as above, but sends <code>VER 1 MSNP21</code> to port 1863 instead. This version is not very common among third party clients.</td>
     </tr>
 </table>
 

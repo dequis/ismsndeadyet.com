@@ -8,14 +8,19 @@ do
     nmap -n -p 80,443,1863 --min-rtt-timeout 3000ms -iL $i -oX $i.xml > /dev/null
 done
 
-(
-    for i in $(cat ${regions[@]})
+check_ver() {
+    proto=$1
+    for ip in $(cat ${regions[@]})
     do
-        sh ping-msn.sh $i &
+        sh ping-msn.sh $proto $ip &
         sleep 0.01
     done
-) > ver_results
+}
 
+check_ver MSNP18 > ver_results_msnp18 &
+wait
+
+check_ver MSNP21 > ver_results_msnp21 &
 wait
 
 python2 renderpage.py
