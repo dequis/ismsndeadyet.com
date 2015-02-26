@@ -7,7 +7,7 @@
 
 <style>
 h1 {
-    font-size: 20vmin;
+    font-size: 14vmin;
     font-weight: bold;
 }
 h2 {
@@ -75,8 +75,8 @@ ul {
         (<a href="http://msn.com">msn.com</a> is unrelated and not going to die, please don't sue me Microsoft, I love you &hearts;)<br />
         (Not affiliated with microsoft in any way)
     </p>
-    <h1 id="nope">NO</h1>
-    <h2 id="maybe">Well maybe just a bit</h2>
+    <h1 id="nope">MOSTLY</h1>
+    <h2 id="maybe">You may still be able to sneak in, but don't count on it :(</h2>
     <div class="space5vh"></div>
 </div>
 
@@ -84,14 +84,13 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>It's not dead, but the normal ways to access it (ports 1863 or 80) will get you connection refused.</p>
-        <p>Only the clients that support connecting through HTTPS (port 443) will work out of the box, which are few, but you can make other clients work <b>by changing the "server" address they use to an internal server</b></p>
-        <p>The catch is that the internal servers will sometimes redirect you to broken servers. So the best advice I have for now is to <b>keep trying several addresses from the lists below until you find that one works.</b></p>
-        <p>Also, keep your clients up to date!</p>
-        <p>Messengergeek wrote a <a href="http://messengergeek.wordpress.com/2014/12/05/microsoft-appears-to-be-pushing-messenger-to-http/">nice blog post explaining the situation</a> in a bit more of detail</p>
+        <p>Since most third party clients use the MSNP18 protocol, they won't be able to connect to almost all the servers. You can still give it a shot by changing the server address, good luck</p>
+        <p>Even if you find an internal server which works, it might redirect your account to a broken server.
+        <p>See also: <a href="https://messengergeek.wordpress.com/2015/02/26/major-messenger-outage-as-msnp-and-http-logins-are-rejected-error-code-81000305/">Messengergeek's blog post</a> for more details</p>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2015-02-26</b>: Almost all the <code>bay</code> and <code>bn1</code> servers now reject the MSNP18 protocol, used by most third party clients.</p>
         <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
         <p><b>2014-12-17</b>: Two main <code>bn1</code> servers closed port 80 (HTTP). HTTPS still works, but few clients use it.</p>
         <p><b>2014-12-09</b>: Two main <code>db3</code> servers closed port 1863. These were the last externally exposed addresses. HTTPS connections to all these servers still work.</p>
@@ -114,11 +113,11 @@ ul {
         <p class="fineprint text-center">(MSNP## denotes the protocol version number)</p>
         <p>
         <ul>
-            <li><a href="http://pidgin.im/">Pidgin</a> 2.10.11 (MSNP18) and derivatives.<br >
-                FAQs: <a href="#pidgin-http-method">HTTP method</a>, <a href="#some-contacts-are-offline">Some contacts are offline</a></li>
-            <li><a href="http://bitlbee.org/">BitlBee</a> (MSNP18), See <a href="#bitlbee">FAQ entry</a> below</li>
-            <li>Adium patched with <a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">adium messenger reviver</a></li>
-            <li><a href="http://www.trillian.im/">Trillian</a>, latest beta build</li>
+            <li><del><a href="http://pidgin.im/">Pidgin</a> 2.10.11 (MSNP18) and derivatives.<br >
+                    FAQs: <a href="#pidgin-http-method">HTTP method</a>, <a href="#some-contacts-are-offline">Some contacts are offline</a></del></li>
+            <li><del><a href="http://bitlbee.org/">BitlBee</a> (MSNP18), See <a href="#bitlbee">FAQ entry</a> below</del></li>
+            <li><del>Adium patched with <a href="http://messengergeek.wordpress.com/2014/11/17/adium-messenger-reviver/">adium messenger reviver</a></del></li>
+            <li><del><a href="http://www.trillian.im/">Trillian</a>, latest beta build</del></li>
         </ul>
         <p>Official clients:</p>
         <ul>
@@ -271,7 +270,7 @@ ul {
 
 <script>
 (function() {
-    var maybe = document.getElementById("maybe");
+    /*var maybe = document.getElementById("maybe");
     var labels = [
         "Well maybe just a bit",
         "Doesn't look too bad here",
@@ -283,7 +282,7 @@ ul {
         "It's not dead, it's pining for the fjords.",
         "Nostalgia awaits!",
     ];
-    maybe.innerHTML = labels[Math.floor(Math.random() * labels.length)];
+    maybe.innerHTML = labels[Math.floor(Math.random() * labels.length)];*/
 })();
 </script>
 </body>
