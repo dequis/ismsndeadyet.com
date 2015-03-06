@@ -201,11 +201,11 @@ ul {
     </tr>
     <tr>
         <td>MSNP18</td>
-        <td>Sends <code>VER 1 MSNP18</code> to port 1863 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
+        <td>Sends <code>VER 1 MSNP18</code> to port 443 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
     </tr>
     <tr>
         <td>MSNP21</td>
-        <td>Same as above, but sends <code>VER 1 MSNP21</code> to port 1863 instead. This version is not very common among third party clients.</td>
+        <td>Same as above, but sends <code>VER 1 MSNP21</code> instead, to port 443. This version is not very common among third party clients (Windows Live Messenger 2012 uses it)</td>
     </tr>
 </table>
 
@@ -223,6 +223,7 @@ ul {
     <p>Change that XXX.XXX.XXX.XXX to something else, and note that overloaded servers may redirect you back to the broken ones!</p>
 
     <h3>How do I switch to HTTP method in pidgin? <a href="#pidgin-http-method" name="pidgin-http-method" class="anchor">#</a></h3>
+    <b>NOTE: these instructions will only work with servers that have port 80 open, and support MSNP18. Good luck</b>
     <ol>
         <li>In the accounts window, click modify</li>
         <li>Go to the advanced tab</li>
@@ -237,9 +238,9 @@ ul {
     <p>If everything fails, <a href="http://outlook.com">outlook.com</a> has a webchat (using MSNP24!), any msn login will work</p>
 
     <h3>How do I fix my BitlBee? <a href="#bitlbee" name="bitlbee" class="anchor">#</a></h3>
-    <p>If you're using revision 1070 (or bitlbee-libpurple with libpurple 2.10.11), just do:</p>
+    <p>If you're using revision 1070 or newer (or bitlbee-libpurple with libpurple 2.10.11), just do:</p>
     <pre>account msn set server XXX.XXX.XXX.XXX</pre>
-    <p>Replacing XXX.XXX.XXX.XXX with an address from the list above</p>
+    <p>Replacing XXX.XXX.XXX.XXX with an address from the list above that has port 1863 open and supports MSNP18</p>
     <p>If you're using something older, it won't work because of the ApplicationID block, even if you get it to connect</p>
     <p><b>Public servers</b>: im.codemonkey.be (<a href="http://bitlbee.org/main.php/servers.html">run by the same sysadmin as testing.bitlbee.org</a>) usually runs the latest version and should work.</p>
     <p><b>See also</b>: <a href="http://wiki.bitlbee.org/HowtoMsn">HowtoMsn wiki page</a></p>
