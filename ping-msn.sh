@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # usage: ping-msn.sh <version> <ip>
 # prints the IP if the server doesn't support the protocol
 # otherwise, quits silently

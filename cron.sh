@@ -12,8 +12,8 @@ check_ver() {
     proto=$1
     for ip in $(cat ${regions[@]})
     do
-        sh ping-msn.sh $proto $ip &
-        sleep 0.01
+        bash ping-msn.sh $proto $ip &
+        sleep 0.05
     done
 }
 
