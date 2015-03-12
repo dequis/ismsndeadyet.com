@@ -84,9 +84,9 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>Since most third party clients use the MSNP18 protocol, they won't be able to connect to almost all the servers. You can still give it a shot by changing the server address, good luck</p>
-        <p>Even if you find an internal server which works, it might redirect your account to a broken server.
-        <p>See also: <a href="https://messengergeek.wordpress.com/2015/02/26/major-messenger-outage-as-msnp-and-http-logins-are-rejected-error-code-81000305/">Messengergeek's blog post</a> for more details</p>
+        <p>Since most third party clients use the MSNP18 protocol, they won't be able to connect. The only option is to wait for them to upgrade to newer protocols</p>
+        <p>Windows Live Messenger 2012 patched with messenger reviver, outlook.com's web client and skype are the only clients that can connect at the moment</p>
+        <p>See also: <a href="https://messengergeek.wordpress.com/2015/03/12/older-versions-of-the-protocol-no-longer-being-accepted-by-any-messenger-server/">Messengergeek's blog post</a> for more details</p>
         <p>Related links:</p>
         <ul class="text-left">
             <li><a href="http://messengergeek.wordpress.com/messenger-status/">Messengergeek's detailed status page</a></li>
@@ -96,6 +96,7 @@ ul {
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2015-03-12</b>: The MSNP18 protocol version, used by most third party clients, and ports 80 and 1863 are gone.</p>
         <p><b>2015-03-05</b>: Most internal <code>bn1</code> servers closed ports 80 and 1863 (Updated version checker to use https instead)</p>
         <p><b>2015-02-26</b>: Almost all the <code>bay</code> and <code>bn1</code> servers now reject the MSNP18 protocol, used by most third party clients.</p>
         <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
@@ -211,7 +212,7 @@ ul {
 
 <div class="container">
     <h2 class="text-center">FAQ <a href="#faq" name="faq" class="anchor">#</a></h2>
-    <h3>What about all the news saying it's gone?  <a href="#what-about-all-the-news-saying-its-gone" name="what-about-all-the-news-saying-its-gone" class="anchor">#</a></h3>
+    <!--h3>What about all the news saying it's gone?  <a href="#what-about-all-the-news-saying-its-gone" name="what-about-all-the-news-saying-its-gone" class="anchor">#</a></h3>
     <p>That's partly because nobody does fact checking and partly because the criteria of "dead" here is more oriented to third party clients</p>
     <p>It was supposed to die in march 2013. The only thing that changed was a forced upgrade of the official clients to skype. Before mid-november 2014 the only issue was that offline messages and mail notifications didn't work.</p>
     <p>Right now it <em>seems</em> like it might be dying, so I made this to track the progress of its death.</p>
@@ -244,7 +245,7 @@ ul {
     <p>If you're using something older, it won't work because of the ApplicationID block, even if you get it to connect</p>
     <p><b>Public servers</b>: im.codemonkey.be (<a href="http://bitlbee.org/main.php/servers.html">run by the same sysadmin as testing.bitlbee.org</a>) usually runs the latest version and should work.</p>
     <p><b>See also</b>: <a href="http://wiki.bitlbee.org/HowtoMsn">HowtoMsn wiki page</a></p>
-
+    -->
     <h3>Why care about MSN? <a href="#why-care-about-msn" name="why-care-about-msn" class="anchor">#</a></h3>
     <p>A few reasons:</p>
     <ul>
@@ -253,11 +254,11 @@ ul {
         <li><a href="http://store.steampowered.com/app/253030/" class="sneaky">I like the idea of delaying the inevitable by catching energy boosts which reverse the setting sun - if only for a moment</a></li>
         <li>Fun things are fun</li>
     </ul>
-    <h3>What does the future hold? <a href="#what-does-the-future-hold" name="what-does-the-future-hold" class="anchor">#</a></h3>
+    <!--<h3>What does the future hold? <a href="#what-does-the-future-hold" name="what-does-the-future-hold" class="anchor">#</a></h3>
     <p>This is speculation, but based on the current trends, it will keep breaking slowly, based on what microsoft doesn't need to keep alive anymore</p>
     <p>The HTTPS method (port 443 in the status table above) is likely to stay up. These servers are still used by skype, although with a newer protocol.</p>
     <p>The messaging client included in windows 8.0 (which they probably still need to support) uses a MSNP22 - a protocol version older than skype's, newer than most other third party clients, but using the same connection method as the older ones, through HTTPS</p>
-    <p><a href="http://messengergeek.wordpress.com/2014/09/11/when-is-messenger-really-shutting-down/">See also this messengergeek post</a></p>
+    <p><a href="http://messengergeek.wordpress.com/2014/09/11/when-is-messenger-really-shutting-down/">See also this messengergeek post</a></p>-->
 </div>
 
 </div>
