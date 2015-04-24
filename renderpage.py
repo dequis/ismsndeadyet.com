@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from jinja2 import Template
 
 ver_results = [[x.strip() for x in open("ver_results_" + y).readlines()]
-               for y in ("msnp18", "msnp21")]
+               for y in ("msnp21")]
 
 def parse(region):
     tree = ET.parse("ips_%s.xml" % region)

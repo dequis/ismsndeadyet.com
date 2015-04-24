@@ -17,9 +17,6 @@ check_ver() {
     done
 }
 
-check_ver MSNP18 > ver_results_msnp18 &
-wait
-
 check_ver MSNP21 > ver_results_msnp21 &
 wait
 
