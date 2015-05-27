@@ -59,6 +59,12 @@ h3 {
 ul {
     padding-left: 20px;
 }
+
+
+#showoldernews {
+    text-align: center;
+    font-style: italic;
+}
 </style>
 
 </head>
@@ -70,7 +76,7 @@ ul {
 <div class="text-center">
     <h2>Is MSN dead yet?</h2>
     <p class="fineprint">
-        (And by MSN I mean <a href="http://en.wikipedia.org/wiki/Microsoft_Messenger_service">microsoft's messenger service</a>, <br />
+        (And by MSN I mean <a href="http://en.wikipedia.org/wiki/Microsoft_Messenger_service">microsoft's messenger service</a>,
         previously known as MSN Messenger or Windows Live Messenger)<br />
         (<a href="http://msn.com">msn.com</a> is unrelated and not going to die, please don't sue me Microsoft, I love you &hearts;)<br />
         (Not affiliated with microsoft in any way)
@@ -84,21 +90,20 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>Since most third party clients use the MSNP18 protocol, <b>they won't be able to connect</b>. The only option is to wait for them to upgrade to newer protocols</p>
-        <p>Windows Live Messenger 2012 patched with messenger reviver, outlook.com's web client and skype are the only clients that can connect at the moment</p>
-        <p><a href="http://gunshowcomic.com/648">That's okay. Things are going to be okay.</a></p>
-        <p>See also: <a href="https://messengergeek.wordpress.com/2015/03/12/older-versions-of-the-protocol-no-longer-being-accepted-by-any-messenger-server/">Messengergeek's blog post</a> for more details</p>
-        <p>Related links:</p>
+        <p>The MSNP18 protocol and all the older versions are gone. MSNP21/22/24 are still there.</p>
+        <p>Most clients still don't implement newer versions. Some are listed on the right column.</p>
+        <h3 class="text-center">Related links</h3>
         <ul class="text-left">
             <li><a href="http://messengergeek.wordpress.com/messenger-status/">Messengergeek's detailed status page</a></li>
             <li><a href="https://status.live.com/detail/msgr">Official status page</a> which seems to ignore the current issues</a></li>
-            <li><a href="http://wiki.dequis.org/projects/msn/protocol_versions/">dx's protocol versions page</a>, status and descriptions</li>
             <li><a href="https://github.com/msndevs/protocol-docs/wiki">msndevs protocol-docs wiki</a></li>
         </ul>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2015-05-27</b>: Nothing broke recently, just reduced the amount of clutter in this page.</p>
         <p><b>2015-03-12</b>: The MSNP18 protocol version, used by most third party clients, and ports 80 and 1863 are gone.</p>
+        <div id="oldernews">
         <p><b>2015-03-05</b>: Most internal <code>bn1</code> servers closed ports 80 and 1863 (Updated version checker to use https instead)</p>
         <p><b>2015-02-26</b>: Almost all the <code>bay</code> and <code>bn1</code> servers now reject the MSNP18 protocol, used by most third party clients.</p>
         <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
@@ -109,39 +114,45 @@ ul {
                 Messengergeek blog post
             </a>
         </p>
+        </div>
+        <a href="#" id="showoldernews" style="display: none">(Show older news)</a>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">What clients work</h3>
-        <p class="fineprint text-center">(MSNP## denotes the protocol version number)</p>
+        <p class="fineprint text-center"><em>(Missing anything in this list? <a href="https://github.com/dequis/ismsndeadyet.com">Pull requests welcome!</a>)</em></p>
         <ul>
             <li><a href="https://github.com/bitlbee/bitlbee">BitlBee git</a> (MSNP21)</li>
             <li><a href="https://messengergeek.wordpress.com/2015/03/25/butterfly-messenger/">Butterfly messenger</a> (MSNP21)</li>
         </ul>
 
-        <p><a href="http://web.skype.com/">Skypeweb</a> based clients <em>(not MSNP, but close enough)</em></p>
+        <a href="http://web.skype.com/">Skypeweb</a> based clients <em>(not MSNP, but close enough)</em>
         <ul>
             <li><a href="https://github.com/EionRobb/skype4pidgin/tree/master/skypeweb">Pidgin skypeweb plugin</a></li>
             <li><a href="https://github.com/miranda-ng/miranda-ng">Miranda-NG skypeweb plugin</a></li>
         </ul>
 
-        <p>Official clients:</p>
+        Official clients:
         <ul>
             <li>
-                Windows Live Messenger 2012 (MSNP21)
+                <abbr title="Windows Live Messenger">WLM</abbr> 2012 (MSNP21)
                 <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
-                    patched with messenger reviver
+                    with messenger reviver
                 </a>
             </li>
             <li>Windows 8.0 Messaging client (MSNP22)</li>
             <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24)</li>
         </ul>
-        <br /><br />
-        <p><em>(Missing anything in this list? <a href="https://github.com/dequis/ismsndeadyet.com">Pull requests welcome!</a>)</em></p>
     </div>
 </div>
 
+<a name="status"></a>
 <div class="text-center">
-    <h2>Needlessly detailed server status <a href="#status" name="status" class="anchor">#</a></h2>
+    <a href="#" id="showstatus" style="display: none; margin: 50px 0;">(Click to show needlessly detailed server status)</a>
+</div>
+
+<div id="statuswrapper">
+<div class="text-center">
+    <h2>Needlessly detailed server status <a href="#status" class="anchor">#</a></h2>
     <p>Updated every 60 minutes.</p>
     <p>TL;DR: There are no servers with port 80, port 1863, or MSNP18 (The ones which do have port 80 open were repurposed for something else)</p>
     <p>May have a few minor mistakes (due to packet loss, etc). Scroll down for reference.</p>
@@ -219,6 +230,8 @@ ul {
     </tr>
 </table>
 
+</div>
+
 <div class="container">
     <h2 class="text-center">FAQ <a href="#faq" name="faq" class="anchor">#</a></h2>
     <!--h3>What about all the news saying it's gone?  <a href="#what-about-all-the-news-saying-its-gone" name="what-about-all-the-news-saying-its-gone" class="anchor">#</a></h3>
@@ -293,6 +306,27 @@ ul {
         "Nostalgia awaits!",
     ];
     maybe.innerHTML = labels[Math.floor(Math.random() * labels.length)];*/
+
+    var get = function(id) {return document.getElementById(id);}
+    var hide = function(id) {get(id).style.display = 'none';}
+    var show = function(id) {get(id).style.display = 'block';}
+
+    hide('oldernews');
+    show('showoldernews');
+
+    get('showoldernews').onclick = function () {
+        show('oldernews');
+        hide('showoldernews');
+        return false;
+    }
+
+    hide('statuswrapper');
+    show('showstatus');
+    get('showstatus').onclick = function() {
+        show('statuswrapper');
+        hide('showstatus');
+        return false;
+    }
 })();
 </script>
 </body>
