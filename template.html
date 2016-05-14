@@ -101,10 +101,13 @@ ul {
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2016-05-14</b>: Major update to the server status section, see below for details</p>
+        <p><b>2016-04-27</b>: <code>db3</code> servers moved to <code>db5</code>.</p>
+        <p><b>2016-02-05</b>: <code>bn1</code> servers moved to <code>bn2</code>.</p>
         <p><b>2015-06-18</b>: Temporary outage of <code>bay</code> servers. A few have been repurposed for skypeweb.</p>
         <p><b>2015-05-27</b>: Nothing broke recently, just reduced the amount of clutter in this page.</p>
-        <p><b>2015-03-12</b>: The MSNP18 protocol version, used by most third party clients, and ports 80 and 1863 are gone.</p>
         <div id="oldernews">
+        <p><b>2015-03-12</b>: The MSNP18 protocol version, used by most third party clients, and ports 80 and 1863 are gone.</p>
         <p><b>2015-03-05</b>: Most internal <code>bn1</code> servers closed ports 80 and 1863 (Updated version checker to use https instead)</p>
         <p><b>2015-02-26</b>: Almost all the <code>bay</code> and <code>bn1</code> servers now reject the MSNP18 protocol, used by most third party clients.</p>
         <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
@@ -156,8 +159,12 @@ ul {
 <div class="text-center">
     <h2>Needlessly detailed server status <a href="#status" class="anchor">#</a></h2>
     <p>Updated every 60 minutes.</p>
-    <p>TL;DR: There are no servers with port 80, port 1863, or MSNP18 (The ones which do have port 80 open were repurposed for something else)</p>
     <p>May have a few minor mistakes (due to packet loss, etc). Scroll down for reference.</p>
+</div>
+<div class="text-left">
+    <p><b>May 2016 update</b>: The <code>bn1</code> and <code>db3</code> datacenters are gone, at least for msn, and were replaced by <code>bn2</code> and <code>db5</code>. I thought they were broken, like many servers of the list were already - repurposed for unrelated things. So now we have fresh IP lists and everything is green again.</p>
+    <p>Port 80 and 1863 are no longer tested against. MSNP22 scanning was added (because it's an one line change), and MSNP18 is kept in the table but not actually scanned.</p>
+    <p>Looks a lot less dead now!</p>
 </div>
 <div class="row">
     {% for name, servers in regions %}
@@ -166,14 +173,13 @@ ul {
         <table class="table table-striped table-hover table-condensed table-status">
         <tr>
             <td>IP</td>
-            <td>:80</td>
             <td>:443</td>
-            <td>:1863</td>
             <td style="font-size: smaller">MSNP18</td>
             <td style="font-size: smaller">MSNP21</td>
+            <td style="font-size: smaller">MSNP22</td>
         </tr>
         {% for ip, ports, ver_results in servers %}
-        <tr {% if loop.index < 3 %}class="main-server"{% endif %}>
+        <tr {% if (name == 'bay' and loop.index < 3) or loop.index < 2 %}class="main-server"{% endif %}>
             <td><code>{{ip}}</code></td>
             {% for port in ports %}
                 {% if port %}
@@ -212,7 +218,7 @@ ul {
     </tr>
     <tr>
         <td>:80</td>
-        <td>HTTP port open. This is what you'd use when enabling HTTP method.</td>
+        <td>(No longer scanned here) HTTP port open. This is what you'd use when enabling HTTP method in old clients. </td>
     </tr>
     <tr>
         <td>:443</td>
@@ -220,15 +226,19 @@ ul {
     </tr>
     <tr>
         <td>:1863</td>
-        <td>MSNP port open. The good old standard msn protocol port.</td>
+        <td>(No longer scanned here) MSNP port open. The good old standard msn protocol port.</td>
     </tr>
     <tr>
         <td>MSNP18</td>
-        <td>Sends <code>VER 1 MSNP18</code> to port 443 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
+        <td>(No longer scanned here) Sends <code>VER 1 MSNP18</code> to port 443 to test if the server still supports that version (the most common one among third party clients). Also helps check for false positives</td>
     </tr>
     <tr>
         <td>MSNP21</td>
         <td>Same as above, but sends <code>VER 1 MSNP21</code> instead, to port 443. This version is not very common among third party clients (Windows Live Messenger 2012 uses it)</td>
+    </tr>
+    <tr>
+        <td>MSNP22</td>
+        <td>Same as above, with <code>VER 1 MSNP22</code>. The windows 8.0 messaging client uses this. No third party implementations I'm aware of.</td>
     </tr>
 </table>
 
