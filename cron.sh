@@ -18,6 +18,7 @@ check_ver() {
 }
 
 check_ver MSNP21 > ver_results_msnp21 &
+check_ver MSNP22 > ver_results_msnp22 &
 wait
 
 python2 renderpage.py
