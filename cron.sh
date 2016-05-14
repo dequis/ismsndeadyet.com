@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-regions=(ips_bay ips_bn1 ips_db3)
+regions=(ips_bay ips_bn2 ips_db5)
 
 for i in ${regions[@]}
 do

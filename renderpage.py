@@ -38,8 +38,8 @@ def render(regions):
 def main():
     render([
         parse('bay'),
-        parse('bn1'),
-        parse('db3'),
+        parse('bn2'),
+        parse('db5'),
     ])
 
 if __name__ == '__main__':
