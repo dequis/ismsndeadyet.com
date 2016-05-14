@@ -14,7 +14,7 @@ def parse(region):
         hostname = host.find("address").attrib['addr']
         ports = host.find("ports")
         if ports is None:
-            host_ports[hostname] = {80: False, 443: False, 1863: False}
+            host_ports[hostname] = {443: False}
         else:
             for port in ports:
                 portid = int(port.attrib['portid'])

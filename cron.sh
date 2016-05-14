@@ -5,7 +5,7 @@ regions=(ips_bay ips_bn2 ips_db5)
 
 for i in ${regions[@]}
 do
-    nmap -n -p 80,443,1863 --min-rtt-timeout 3000ms -iL $i -oX $i.xml > /dev/null
+    nmap -n -p 443 --min-rtt-timeout 3000ms -iL $i -oX $i.xml > /dev/null
 done
 
 check_ver() {
