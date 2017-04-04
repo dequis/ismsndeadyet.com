@@ -37,11 +37,10 @@ def render(regions):
 
 def main():
     render([
-        parse('bay'),
         parse('bn2'),
         parse('db5'),
+        parse('co4'),
     ])
 
 if __name__ == '__main__':
     main()
-
