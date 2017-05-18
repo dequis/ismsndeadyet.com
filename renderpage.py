@@ -27,6 +27,8 @@ def parse(region):
         ip_ver_results = [ip not in x for x in ver_results]
         if ip in host_ports:
             output.append((ip, host_ports[ip].values(), ip_ver_results))
+        else:
+            output.append((ip, [False], ip_ver_results))
 
     return (region, output)
 
