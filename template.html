@@ -81,8 +81,8 @@ ul {
         (<a href="http://msn.com">msn.com</a> is unrelated and not going to die, please don't sue me Microsoft, I love you &hearts;)<br />
         (Not affiliated with microsoft in any way)
     </p>
-    <h1 id="nope">MOSTLY</h1>
-    <h2 id="maybe">Most third party clients can't connect anymore, MSNP18 is gone.</h2>
+    <h1 id="nope">YES</h1>
+    <h2 id="maybe">All protocol versions up to MSNP22 are gone</h2>
     <div class="space5vh"></div>
 </div>
 
@@ -90,18 +90,19 @@ ul {
 <div class="row">
     <div class="col-md-4">
         <h3 class="text-center">Current situation</h3>
-        <p>The MSNP18 protocol and all the older versions are gone. MSNP21/22/24 are mostly still there.</p>
-        <p>MSNP21/MSNP22 may be getting discontinued as of may 2017</p>
-        <p>Most clients still don't implement newer versions. Some are listed on the right column.</p>
+        <p>The servers that implemented MSNP21 and MSNP22 are gone, two years after MSNP18 and all the other versions were discontinued.</p>
+        <p>MSNP24 still works, but it uses different servers and was (is?) primarily used by skype clients. So for the purposes of this status page, MSNP24 is skype, not MSN.</p>
+        <p>MSNP21 was the last protocol implemented by a Windows Live Messenger branded client (WLM 2012)</p>
+        <p>MSNP22 was very similar to MSNP21, sharing the same servers, and was implemented by the Windows 8.0 messaging client. Windows 8.0 has been unsupported since january 2016.</p>
         <h3 class="text-center">Related links</h3>
         <ul class="text-left">
+            <li><a href="https://messengergeek.wordpress.com/2017/05/18/messenger-presently-offline/">Messengergeek blog post</a></li>
             <li><a href="http://messengergeek.wordpress.com/messenger-status/">Messengergeek's detailed status page</a></li>
-            <li><a href="https://status.live.com/detail/msgr">Official status page</a> which seems to ignore the current issues</a></li>
-            <li><a href="https://github.com/msndevs/protocol-docs/wiki">msndevs protocol-docs wiki</a></li>
         </ul>
     </div>
     <div class="col-md-4">
         <h3 class="text-center">Breaking news</h3>
+        <p><b>2017-05-19</b>: After 24 hours of downtime it's safe to conclude all servers are gone for good. RIP.</p>
         <p><b>2017-05-18</b>: Many servers down while <code>geo</code> still points to them.</p>
         <p><b>2017-03-22</b>: Back to normal.</p>
         <p><b>2017-03-21</b>: Microsoft login servers broke, affecting all their services. Not really specific to MSN.</p>
@@ -110,8 +111,8 @@ ul {
         <p><b>2016-02-05</b>: <code>bn1</code> servers moved to <code>bn2</code>.</p>
         <p><b>2015-06-18</b>: Temporary outage of <code>bay</code> servers. A few have been repurposed for skypeweb.</p>
         <p><b>2015-05-27</b>: Nothing broke recently, just reduced the amount of clutter in this page.</p>
-        <div id="oldernews">
         <p><b>2015-03-12</b>: The MSNP18 protocol version, used by most third party clients, and ports 80 and 1863 are gone.</p>
+        <div id="oldernews">
         <p><b>2015-03-05</b>: Most internal <code>bn1</code> servers closed ports 80 and 1863 (Updated version checker to use https instead)</p>
         <p><b>2015-02-26</b>: Almost all the <code>bay</code> and <code>bn1</code> servers now reject the MSNP18 protocol, used by most third party clients.</p>
         <p><b>2015-01-09</b>: Two main <code>db3</code> servers and one <code>bay</code> server closed port 80 (HTTP).</p>
@@ -130,8 +131,6 @@ ul {
         <p class="fineprint text-center"><em>(Missing anything in this list? <a href="https://github.com/dequis/ismsndeadyet.com">Pull requests welcome!</a>)</em></p>
         <ul>
             <li><a href="https://github.com/miranda-ng/miranda-ng">Miranda-NG MSN plugin</a> (MSNP24)</li>
-            <li><a href="https://github.com/bitlbee/bitlbee">BitlBee 3.4.1</a> (MSNP21)</li>
-            <li><a href="https://messengergeek.wordpress.com/2015/03/25/butterfly-messenger/">Butterfly messenger</a> (MSNP21)</li>
         </ul>
 
         <a href="http://web.skype.com/">Skypeweb</a> based clients <em>(not MSNP, but close enough)</em>
@@ -142,13 +141,6 @@ ul {
 
         Official clients:
         <ul>
-            <li>
-                <abbr title="Windows Live Messenger">WLM</abbr> 2012 (MSNP21)
-                <a href="http://messengergeek.wordpress.com/2013/04/23/use-messenger-reviver-2-to-bring-back-messenger-and-beat-skype/">
-                    with messenger reviver
-                </a>
-            </li>
-            <li>Windows 8.0 Messaging client (MSNP22)</li>
             <li>Skype and <a href="http://outlook.com">outlook.com</a> (MSNP24)</li>
         </ul>
     </div>
@@ -166,9 +158,7 @@ ul {
     <p>May have a few minor mistakes (due to packet loss, etc). Scroll down for reference.</p>
 </div>
 <div class="text-left">
-    <p><b>April 2017 update</b>: The <code>bay</code> datacenter is gone and was replaced by <code>co4</code>. Fixed <code>db5</code> IPs.</p>
-    <p><b>May 2016 update</b>: The <code>bn1</code> and <code>db3</code> datacenters are gone, at least for msn, and were replaced by <code>bn2</code> and <code>db5</code>. I thought they were broken, like many servers of the list were already - repurposed for unrelated things. So now we have fresh IP lists and everything is green again.</p>
-    <p>Port 80 and 1863 are no longer tested against. MSNP22 scanning was added (because it's an one line change), and MSNP18 is kept in the table but not actually scanned.</p>
+    <p><b>May 2017 update:</b> Only port 443 tests are being run. Any servers that are up should be manually checked to not be assigned to some other service.</p>
 </div>
 <div class="row">
     {% for name, servers in regions %}
